@@ -320,6 +320,16 @@ class CompoundTag extends NamedTag implements \ArrayAccess, \Iterator, \Countabl
 		unset($this->value[$offset]);
 	}
 
+	public function ksort() : self{
+		if (!is_array($this->value)) {
+			return $this;
+		}
+
+		ksort($this->value, SORT_STRING);
+
+		return $this;
+	}
+
 	public function getType() : int{
 		return NBT::TAG_Compound;
 	}
